@@ -16,21 +16,20 @@
 
 | Field                  | Details                                     |
 | ---------------------- | ------------------------------------------- |
-| **Team Name**          | Your Team Name                              |
-| **Team Domain**        | Domain 1 / Domain 2 *(choose one)*          |
-| **SDG Track (1–17)**   | e.g. SDG 11 — Sustainable Cities and Communities |
-| **Team Leader**        | Leader Name                                 |
-| **University**         | University Name(s)                          |
-| **Number of Members**  | e.g. 4                                      |
+| **Team Name**          | Geek Fam                                    |
+| **Team Domain**        | Domain 1                                    |
+| **SDG Track (1–17)**   | SD4 AND SDG 8                               |
+| **Team Leader**        | MUHAMMAD AMMAR HARIZ BIN YAZID HAMDI        |
+| **University**         | University Technical Melaka Malaysia        |
+| **Number of Members**  | 5                                           |
 
 ## Links
 
 | Resource          | Link                                           |
 | ----------------- | ---------------------------------------------- |
-| GitHub Repository | https://github.com/your-username/your-project  |
-| Replit Project    | https://replit.com/@your-username/your-project |
-| Live Demo         | https://your-project.replit.app                |
-| RunPod Endpoint   | https://api.runpod.ai/v2/your-endpoint-id      |
+| GitHub Repository | https://github.com/admirfn988/Career-Navigation.git |
+| Replit Project    | https://ai-career-navigator-ayiqq.replit.app/  |
+| Live Demo         |                 |
 | Slide Deck        | https://example.com/slides                     |
 | Demo Video        | https://example.com/demo-video                 |
 
