@@ -25,13 +25,13 @@
 
 ## Links
 
-| Resource          | Link                                           |
-| ----------------- | ---------------------------------------------- |
-| GitHub Repository | https://github.com/admirfn988/Career-Navigation.git |
-| Replit Project    | https://replit.com/join#t=hkhiwxdyebqhlyl-ayiqq|
-| Live Demo         | https://ai-career-navigator-ayiqq.replit.app/  |
-| Slide Deck        | https://example.com/slides                     |
-| Demo Video        | https://example.com/demo-video                 |
+| Resource          | Link                                                                               |
+| ----------------- | ---------------------------------------------------------------------------------- |
+| GitHub Repository | https://github.com/admirfn988/Career-Navigation.git                                |
+| Replit Project    | https://replit.com/join#t=hkhiwxdyebqhlyl-ayiqq                                    |
+| Live Demo         | https://ai-career-navigator-ayiqq.replit.app/                                      |
+| Slide Deck        | https://example.com/slides                                                         |
+| Demo Video        | https://drive.google.com/file/d/1ILj2DkwrQ-oLop67bIfk_LLjT4o7SViK/view?usp=sharing |
 
 ---
 
@@ -55,7 +55,7 @@ AI Career Navigator is a web-based platform that guides users toward suitable fu
 
 | Layer         | Technology                   |
 | ------------- | ---------------------------- |
-| Frontend      | e.g. HTML, React             |
+| Frontend      |              |
 | Backend       | e.g. Python, Flask / FastAPI |
 | Database      | e.g. PostgreSQL, SQLite      |
 | AI / Compute  | RunPod (GPU)                 |
@@ -183,17 +183,19 @@ Our team learned the importance of teamwork, communication, and problem-solving.
 
 ## Team
 
-| Name        | Role                | GitHub                                   |
-| ----------- | ------------------- | ---------------------------------------- |
-| Member Name | Team Lead / Backend | [@username](https://github.com/username) |
-| Member Name | Frontend            | [@username](https://github.com/username) |
-| Member Name | AI / RunPod         | [@username](https://github.com/username) |
+| Name        | Role                     | GitHub                                   |
+| ----------- | -------------------      | ---------------------------------------- |
+| Ammar       | project manager          | [@username](https://github.com/username) |
+| Ariq        | UI/UX Designer           | [@username](https://github.com/username) |
+| Adam        | Frontend                 | [@username](https://github.com/username) |
+| Haziq       | Career Research          | [@username](https://github.com/username) |
+| Hadif       | Documentation Specialist | [@username](https://github.com/username) |
 
 ---
 
 ## Submission Checklist
 
-- [ ] Team name, domain (Domain 1 / Domain 2) and SDG track filled in
+- [ ] Team name, domain (Domain 1) and SDG track filled in
 - [ ] Slide deck link added
 - [ ] Demo video link added
 - [ ] Replit used, with proof of use in `submission/`
