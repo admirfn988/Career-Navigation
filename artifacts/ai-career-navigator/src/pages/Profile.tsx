@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'wouter';
 import { ArrowRight, Check, Plus, RotateCcw, X } from 'lucide-react';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -18,15 +18,33 @@ const profileSchema = z.object({
 });
 
 export default function ProfilePage() {
-  const { profile, setProfile, profileIsSample } = useNavigator();
+  const {
+    profile,
+    setProfile,
+    profileIsSample,
+    selectedCareerId,
+    scenario,
+    persistState,
+    stateLoaded,
+    databaseStatus,
+  } = useNavigator();
   const [, setLocation] = useLocation();
   const form = useForm<Profile>({ resolver: zodResolver(profileSchema), defaultValues: profile });
   const [draftIsSample, setDraftIsSample] = useState(profileIsSample);
   const [skillEntry, setSkillEntry] = useState('');
   const [saved, setSaved] = useState(false);
+  const [saveError, setSaveError] = useState('');
   const analyzeAfterSave = useRef(false);
   const skills = form.watch('skills');
   const interests = form.watch('interests');
+  const formIsDirty = form.formState.isDirty;
+
+  useEffect(() => {
+    if (!stateLoaded || formIsDirty) return;
+    form.reset(profile);
+    setDraftIsSample(profileIsSample);
+  }, [stateLoaded, formIsDirty, profile, profileIsSample, form.reset]);
+
   const toggleSkill = (skill: string) => {
     const current = form.getValues('skills');
     form.setValue('skills', current.includes(skill) ? current.filter((item) => item !== skill) : [...current, skill], { shouldDirty: true, shouldValidate: true });
@@ -46,19 +64,33 @@ export default function ProfilePage() {
     }
     setSkillEntry('');
   };
-  const onSubmit = form.handleSubmit((data) => {
+  const onSubmit = form.handleSubmit(async (data) => {
     setSaved(false);
+    setSaveError('');
     setProfile(data, draftIsSample);
-    setSaved(true);
+    try {
+      await persistState({
+        profile: data,
+        profileIsSample: draftIsSample,
+        selectedCareerId,
+        scenario,
+      });
+      setSaved(true);
+    } catch (error) {
+      setSaveError(error instanceof Error ? error.message : 'MySQL did not confirm the save.');
+    }
     if (analyzeAfterSave.current) setLocation('/careers');
   });
   const loadDemo = () => {
-    form.reset({ ...demoProfile, skills: [...demoProfile.skills], interests: [...demoProfile.interests] });
+    const nextProfile = { ...demoProfile, skills: [...demoProfile.skills], interests: [...demoProfile.interests] };
+    form.reset(nextProfile);
+    setProfile(nextProfile, true);
     setDraftIsSample(true);
     setSaved(false);
+    setSaveError('');
   };
   return <div className="page">
-    <PageIntro eyebrow="01 / Your profile" title="Start with the evidence you have.">A good match begins with your context, not a job title. Share only what is useful. {profileIsSample ? 'The profile currently shown is a fictional sample for demonstration; replace it with your details before interpreting the results.' : 'Your profile is held in this browser session only; it is not sent to a database.'}</PageIntro>
+    <PageIntro eyebrow="01 / Your profile" title="Start with the evidence you have.">A good match begins with your context, not a job title. Share only what is useful. {profileIsSample ? 'The profile currently shown is a fictional sample for demonstration; replace it with your details before interpreting the results.' : databaseStatus === 'connected' ? 'This browser’s saved profile is connected to MySQL.' : 'Changes are not confirmed as saved until MySQL is connected.'}</PageIntro>
     <Panel className="panel-pad">
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 14, flexWrap: 'wrap', marginBottom: 22 }}>
         <div><h2 className="section-title">Your background</h2><p className="field-hint" style={{ margin: '6px 0 0' }}>Required for analysis: education, at least one skill, and one interest.</p></div>
@@ -78,7 +110,8 @@ export default function ProfilePage() {
             <FormField control={form.control} name="interests" render={({ fieldState }) => <FormItem className="field form-wide"><span className="label">Career interests <span aria-hidden="true">*</span></span><span className="field-hint">Choose any that feel worth exploring. These are prompts, not a commitment.</span><div className="chip-row" role="group" aria-label="Career interest options">{interestOptions.map((interest) => <button type="button" className={`chip chip-toggle ${interests.includes(interest) ? 'chip-selected' : ''}`} key={interest} onClick={() => toggleInterest(interest)} aria-pressed={interests.includes(interest)} data-testid={`button-interest-${interest.replaceAll(' ', '-')}`}>{interests.includes(interest) && <Check size={11} />}{interest}</button>)}</div>{fieldState.error && <FormMessage />}</FormItem>} />
           </div>
           {form.formState.isSubmitted && !form.formState.isValid && <div className="callout" role="alert" style={{ marginTop: 20 }} data-testid="status-profile-errors"><strong>Before analysis, add a little more.</strong> Complete the required fields marked above.</div>}
-          {saved && <div className="status-line" role="status" style={{ marginTop: 18 }} data-testid="status-profile-saved"><span className="status-dot ready" />Profile updated in this browser session.</div>}
+          {saved && <div className="status-line" role="status" style={{ marginTop: 18 }} data-testid="status-profile-saved"><span className="status-dot ready" />Profile and choices saved to MySQL for this browser.</div>}
+          {saveError && <div className="callout" role="alert" style={{ marginTop: 18 }} data-testid="status-profile-save-error"><strong>Profile was not saved to MySQL.</strong> {saveError}</div>}
           <hr className="divider" />
           <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
             <button className="button button-secondary" onClick={() => { analyzeAfterSave.current = false; }} type="submit" data-testid="button-save-profile">Save profile</button>

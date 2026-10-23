@@ -5,14 +5,14 @@ import { careers } from '../data/careers';
 import { useNavigator } from '../state/NavigatorContext';
 
 export default function Dashboard() {
-  const { profile, profileReady, selectedCareerId, profileIsSample } = useNavigator();
+  const { profile, profileReady, selectedCareerId, profileIsSample, databaseStatus, statePersisted } = useNavigator();
   const selectedCareer = careers.find((career) => career.id === selectedCareerId);
   return <div className="page">
     <PageIntro eyebrow="Your starting point" title="Make room for more than one future.">A practical place to connect what you already know with work that may be changing. Start with your real experience; explore the options without treating a match as a promise.</PageIntro>
     <section className="hero-panel" data-testid="panel-dashboard-hero">
       <div className="hero-kicker">AI & work · a guided exploration</div>
       <h2 className="hero-title">Your next step starts with what you already bring.</h2>
-      <p className="hero-copy">Build a skills picture, compare sample career paths, and make a learning plan you can adapt. Your information stays in this browser session for this demo.</p>
+      <p className="hero-copy">Build a skills picture, compare sample career paths, and make a learning plan you can adapt. {databaseStatus === 'connected' ? statePersisted ? 'Your profile and choices are saved to MySQL for this browser.' : 'MySQL is connected. Save your profile to store it for this browser.' : databaseStatus === 'saving' ? 'Your changes are being sent to MySQL.' : databaseStatus === 'unavailable' ? 'MySQL is unavailable, so changes cannot be saved or restored yet.' : 'Checking whether MySQL is available.'}</p>
       <div className="hero-actions">
         <Link href={profileReady ? '/careers' : '/profile'} className="button button-primary" data-testid="link-start-exploring">{profileReady ? 'See career matches' : 'Build your profile'}<ArrowRight size={15} /></Link>
         <Link href="/future-skills" className="button button-quiet" data-testid="link-future-skills-hero">Explore future skills</Link>

@@ -12,7 +12,7 @@ export const recommendedLearningResources = [
     provider: 'Microsoft Learn',
     url: 'https://learn.microsoft.com/en-us/training/modules/get-started-ai-fundamentals/',
     duration: '40 min',
-    checked: '23 Oct 2026',
+    checked: '24 Oct 2026',
     detail: 'Beginner module introducing AI concepts and responsible AI practices.',
   },
   {
@@ -20,7 +20,7 @@ export const recommendedLearningResources = [
     provider: 'Microsoft Learn',
     url: 'https://learn.microsoft.com/en-us/training/modules/fundamentals-machine-learning/',
     duration: '1 hr 33 min',
-    checked: '23 Oct 2026',
+    checked: '24 Oct 2026',
     detail: 'Beginner module covering core machine-learning models and concepts.',
   },
 ];
@@ -36,7 +36,7 @@ export const trendSources = [
   {
     label: 'Computer and Information Research Scientists',
     publisher: 'U.S. Bureau of Labor Statistics',
-    date: 'Occupational outlook period: 2025–35 · page checked 23 Oct 2026',
+    date: 'Occupational outlook period: 2025–35 · page checked 24 Oct 2026',
     url: 'https://www.bls.gov/ooh/computer-and-information-technology/computer-and-information-research-scientists.htm',
     note: 'An example of an official, occupation-specific U.S. outlook source. Its projections are not a direct measure of AI disruption and should not be generalized to other occupations or regions.',
   },

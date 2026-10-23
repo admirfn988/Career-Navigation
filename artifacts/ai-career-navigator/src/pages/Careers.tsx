@@ -6,7 +6,15 @@ import { careers, scoreCareer } from '../data/careers';
 import { useNavigator } from '../state/NavigatorContext';
 
 export default function Careers() {
-  const { profile, profileReady, selectedCareerId, setSelectedCareerId } = useNavigator();
+  const {
+    profile,
+    profileReady,
+    profileIsSample,
+    selectedCareerId,
+    scenario,
+    setSelectedCareerId,
+    persistState,
+  } = useNavigator();
   const ranked = useMemo(() => careers.map((role) => ({ role, ...scoreCareer(profile, role) })).sort((a, b) => b.score - a.score || a.role.title.localeCompare(b.role.title)), [profile]);
   if (!profileReady) return <div className="page"><PageIntro eyebrow="02 / Career matching" title="First, add your context.">Career matching compares your profile with each sample role. It needs education, at least one skill, and at least one career interest to give you a useful starting point.</PageIntro><Panel className="empty-state"><UserRound size={28} /><h3>Your profile is not ready yet</h3><p>Add the required profile details before viewing a score.</p><Link href="/profile" className="button button-primary" data-testid="link-complete-profile">Complete profile <ArrowRight size={14} /></Link></Panel></div>;
   return <div className="page">
@@ -23,7 +31,7 @@ export default function Careers() {
         <p className="field-hint" style={{ minHeight: 53, lineHeight: 1.6 }}>{role.summary}</p>
         <div className="career-score-explain" data-testid={`text-score-explanation-${role.id}`}><strong>Score breakdown</strong><br />Skills: {skillHits.length}/{role.requiredSkills.length} matched ({Math.round(skillScore * 100)}% of 70%)<br />Interests: {interestHits.length}/{role.interestTags.length} matched ({Math.round(interestScore * 100)}% of 30%)<br /><span>Skill overlap: {skillHits.length ? skillHits.join(', ') : 'none yet'}. Interest overlap: {interestHits.length ? interestHits.join(', ') : 'none yet'}.</span></div>
         <div className="small-mono">Role outlook · sample framing</div><p className="field-hint" style={{ marginTop: 5, lineHeight: 1.55 }}>{role.outlook}</p>
-        <button className={`button ${selected ? 'button-secondary' : 'button-primary'}`} style={{ width: '100%', marginTop: 8 }} onClick={() => setSelectedCareerId(role.id)} aria-pressed={selected} data-testid={`button-select-career-${role.id}`}>{selected ? <><Check size={14} />Selected</> : 'Explore this path'}</button>
+         <button className={`button ${selected ? 'button-secondary' : 'button-primary'}`} style={{ width: '100%', marginTop: 8 }} onClick={() => { setSelectedCareerId(role.id); void persistState({ profile, profileIsSample, selectedCareerId: role.id, scenario }).catch(() => undefined); }} aria-pressed={selected} data-testid={`button-select-career-${role.id}`}>{selected ? <><Check size={14} />Selected</> : 'Explore this path'}</button>
       </article>;
     })}</div>
     {selectedCareerId && <Panel className="panel-pad" style={{ marginTop: 22 }} data-testid="status-career-selected"><div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}><div><div className="small-mono">Selected pathway</div><strong>{careers.find((item) => item.id === selectedCareerId)?.title}</strong><p className="field-hint" style={{ margin: '5px 0 0' }}>You can change this selection at any time.</p></div><div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}><Link href="/skills-gap" className="button button-primary" data-testid="link-selected-career-gap">View skills gap <ArrowRight size={14} /></Link><Link href="/roadmap" className="button button-secondary" data-testid="link-selected-career-roadmap">Open roadmap</Link></div></div></Panel>}
