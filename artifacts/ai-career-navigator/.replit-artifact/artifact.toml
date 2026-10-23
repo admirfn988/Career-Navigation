@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "AI Career Navigator"
+description = "A responsive career exploration app for students, graduates, and working adults to review their profile, compare future career options, and explore skills and learning pathways using clearly labelled sample data."
+version = "1.0.0"
+id = "artifacts/ai-career-navigator"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 19047
+
+[services.development]
+run = "pnpm --filter @workspace/ai-career-navigator run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/ai-career-navigator", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/ai-career-navigator/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "19047"
+BASE_PATH = "/"

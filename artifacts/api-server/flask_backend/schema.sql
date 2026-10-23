@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS career_navigator_state (
+    session_id CHAR(32) NOT NULL PRIMARY KEY,
+    profile JSON NOT NULL,
+    profile_is_sample BOOLEAN NOT NULL DEFAULT FALSE,
+    selected_career_id VARCHAR(100) NULL,
+    scenario VARCHAR(20) NOT NULL DEFAULT 'moderate',
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

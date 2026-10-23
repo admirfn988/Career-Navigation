@@ -1,0 +1,1 @@
+- [Multi-action forms](multi-action-forms.md) — use synchronous submit intent when multiple buttons share one form submit handler.

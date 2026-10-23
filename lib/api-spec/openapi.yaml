@@ -1,0 +1,159 @@
+openapi: 3.1.0
+info:
+  # Do not change the title, if the title changes, the import paths will be broken
+  title: Api
+  version: 0.1.0
+  description: API specification
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: navigator
+    description: Saved career navigator state
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      description: Returns server health status
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+  /career/state:
+    get:
+      operationId: getCareerState
+      tags: [navigator]
+      summary: Read the current browser's saved career navigator state
+      responses:
+        "200":
+          description: Saved state, or an empty state when this browser has not saved one
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CareerState"
+        "503":
+          description: MySQL is not configured or is unavailable
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiError"
+    put:
+      operationId: saveCareerState
+      tags: [navigator]
+      summary: Save career navigator state for the current browser session
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CareerStateInput"
+      responses:
+        "200":
+          description: State was written to MySQL
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CareerState"
+        "400":
+          description: Request data is invalid
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiError"
+        "503":
+          description: MySQL is not configured or is unavailable
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiError"
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+    CareerProfile:
+      type: object
+      properties:
+        education:
+          type: string
+          minLength: 1
+          maxLength: 500
+        skills:
+          type: array
+          minItems: 1
+          maxItems: 40
+          items:
+            type: string
+            minLength: 1
+            maxLength: 100
+        experience:
+          type: string
+          maxLength: 5000
+        projects:
+          type: string
+          maxLength: 5000
+        interests:
+          type: array
+          minItems: 1
+          maxItems: 20
+          items:
+            type: string
+            minLength: 1
+            maxLength: 100
+      required: [education, skills, experience, projects, interests]
+      additionalProperties: false
+    CareerStateInput:
+      type: object
+      properties:
+        profile:
+          $ref: "#/components/schemas/CareerProfile"
+        profileIsSample:
+          type: boolean
+        selectedCareerId:
+          type: ["string", "null"]
+          maxLength: 100
+        scenario:
+          type: string
+          enum: [moderate, fast]
+      required: [profile, profileIsSample, selectedCareerId, scenario]
+      additionalProperties: false
+    CareerState:
+      type: object
+      properties:
+        profile:
+          oneOf:
+            - $ref: "#/components/schemas/CareerProfile"
+            - type: "null"
+        profileIsSample:
+          type: boolean
+        selectedCareerId:
+          type: ["string", "null"]
+        scenario:
+          type: string
+          enum: [moderate, fast]
+        updatedAt:
+          type: ["string", "null"]
+          format: date-time
+      required: [profile, profileIsSample, selectedCareerId, scenario, updatedAt]
+      additionalProperties: false
+    ApiError:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+      required: [error, message]
+      additionalProperties: false
+
