@@ -28,8 +28,8 @@
 | Resource          | Link                                           |
 | ----------------- | ---------------------------------------------- |
 | GitHub Repository | https://github.com/admirfn988/Career-Navigation.git |
-| Replit Project    | https://ai-career-navigator-ayiqq.replit.app/  |
-| Live Demo         |                 |
+| Replit Project    | https://replit.com/join#t=hkhiwxdyebqhlyl-ayiqq|
+| Live Demo         | https://ai-career-navigator-ayiqq.replit.app/  |
 | Slide Deck        | https://example.com/slides                     |
 | Demo Video        | https://example.com/demo-video                 |
 
@@ -39,11 +39,11 @@
 
 ### Problem
 
-Describe the real-world problem you are solving in 2–4 sentences. Who is affected, and why does it matter?
+AI is reshaping the job market, leaving students and fresh graduates uncertain about which careers will emerge and which skills they need to stay competitive.
 
 ### Solution
 
-Explain how your project uses AI to solve the problem and what makes it valuable.
+AI Career Navigator is a web-based platform that guides users toward suitable future careers based on their education, skills and interests. It draws on AI and job-market trend references to highlight emerging skills, recommend matching roles, explain skill gaps and build personalised reskilling pathways.
 
 ### Key Features
 
@@ -170,13 +170,16 @@ curl -X POST https://api.runpod.ai/v2/$RUNPOD_ENDPOINT_ID/runsync \
 
 ## Challenges & Learnings
 
-- What challenges did you face, and how did you overcome them?
-- What did your team learn?
+1. What challenges did you face, and how did you overcome them?
+Our main challenge was designing a website that could match users with suitable careers based on their skills and interests. We overcame this by developing a clear matching formula and organising the website features systematically. We also worked together to solve problems and improve the website.
+2. What did your team learn?
+Our team learned the importance of teamwork, communication, and problem-solving. We also gained experience in website development and learned how AI may influence future career opportunities. Most importantly, we learned that continuous learning and adaptability are essential in a changing job market.
 
 ## Future Improvements
 
-- [ ] Improvement 1
-- [ ] Improvement 2
+1. Improve career matching accuracy: Use real-time job market data to provide more accurate career recommendations based on users’ skills and interests.
+
+2. Add learning resources: Recommend courses and learning materials to help users develop missing skills and prepare for their chosen careers.
 
 ## Team
 
