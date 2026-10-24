@@ -8,7 +8,7 @@
 
 # Project Name
 
-> A one-sentence description of what your project does and who it is for.
+AI Career Job is a career exploration platform that helps students and graduates discover suitable careers, identify skill gaps, and prepare for future job market changes driven by artificial intelligence
 
 ---
 
@@ -30,7 +30,7 @@
 | GitHub Repository | https://github.com/admirfn988/Career-Navigation.git                                |
 | Replit Project    | https://replit.com/join#t=hkhiwxdyebqhlyl-ayiqq                                    |
 | Live Demo         | https://ai-career-navigator-ayiqq.replit.app/                                      |
-| Slide Deck        | https://example.com/slides                                                         |
+| Slide Deck        | https://drive.google.com/file/d/1y1DcPOkoq214WMABzzALsrVzmMxwRXR0/view?usp=sharing |
 | Demo Video        | https://drive.google.com/file/d/1ILj2DkwrQ-oLop67bIfk_LLjT4o7SViK/view?usp=sharing |
 
 ---
@@ -47,19 +47,19 @@ AI Career Navigator is a web-based platform that guides users toward suitable fu
 
 ### Key Features
 
-- **Feature 1** — Short description.
-- **Feature 2** — Short description.
-- **Feature 3** — Short description.
+> Career Matching — Recommends potential careers based on users’ skills and interests.
+> Future Skills & Skills Gap Analysis — Identifies important future skills and highlights areas users need to improve.
+> AI Career Planning — Explores possible AI disruption scenarios and helps users prepare for future job market changes.
 
 ### Tech Stack
 
-| Layer         | Technology                   |
-| ------------- | ---------------------------- |
-| Frontend      |              |
-| Backend       | e.g. Python, Flask / FastAPI |
-| Database      | e.g. PostgreSQL, SQLite      |
-| AI / Compute  | RunPod (GPU)                 |
-| Hosting / Dev | Replit                       |
+| Layer         | Technology                            |
+| ------------- | ------------------------------------- |
+| Frontend      |  HTML, CSS, and JavaScript            |
+| Backend       |  Python Flask with REST API endpoints |
+| Database      | MySQL                                 |
+| AI / Compute  | Replit, Germini and Claude            |
+| Hosting / Dev | Replit                                |
 
 ---
 
@@ -183,13 +183,13 @@ Our team learned the importance of teamwork, communication, and problem-solving.
 
 ## Team
 
-| Name        | Role                     | GitHub                                   |
-| ----------- | -------------------      | ---------------------------------------- |
-| Ammar       | project manager          | [@username](https://github.com/username) |
-| Ariq        | UI/UX Designer           | [@username](https://github.com/username) |
-| Adam        | Frontend                 | [@username](https://github.com/username) |
-| Haziq       | Career Research          | [@username](https://github.com/username) |
-| Hadif       | Documentation Specialist | [@username](https://github.com/username) |
+| Name        | Role                     | GitHub                                                        |
+| ----------- | -------------------      | ------------------------------------------------------------- |
+| Ammar       | project manager          | [@ammmarhariz140807]https://github.com/ammarhariz140807-hub   |
+| Ariq        | UI/UX Designer           | [@amad](https://github.com/ahmadariq07-crypto)                |
+| Adam        | Frontend                 | [@Bino](https://github.com/admirfn988)                        |
+| Haziq       | Career Research          | [@2ztuzi] https://github.com/2ztuzi                           |
+| Hadif       | Documentation Specialist | [@difwafiy007] https://github.com/difwafiy007-cpu             |
 
 ---
 
