@@ -145,7 +145,7 @@ Describe how your team used Replit. For example:
 - **Hosting:** The app is deployed with Replit Deployments at the Live Demo link above.
 - **Secrets:** API keys are stored in Replit Secrets, never in the code.
 
-📄 Proof of use: [`submission/SDC2026_TeamName_Replit_POU.pdf`](submission/SDC2026_TeamName_Replit_POU.pdf)
+📄 Proof of use: https://replit.com/join#t=hkhiwxdyebqhlyl-ayiqq
 
 ---
 
