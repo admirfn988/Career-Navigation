@@ -147,25 +147,6 @@ Describe how your team used Replit. For example:
 
 📄 Proof of use: [`submission/SDC2026_TeamName_Replit_POU.pdf`](submission/SDC2026_TeamName_Replit_POU.pdf)
 
-## How We Use RunPod *(Required)*
-
-Describe how your team used RunPod. For example:
-
-- **Workload:** Model inference (e.g. text generation, image processing) runs on a RunPod GPU.
-- **Setup:** `runpod/handler.py` is deployed as a **RunPod Serverless Endpoint**.
-- **Integration:** The Replit app sends requests to the endpoint using `RUNPOD_API_KEY` and `RUNPOD_ENDPOINT_ID`.
-
-Example request:
-
-```bash
-curl -X POST https://api.runpod.ai/v2/$RUNPOD_ENDPOINT_ID/runsync \
-  -H "Authorization: Bearer $RUNPOD_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"input": {"prompt": "Hello"}}'
-```
-
-📄 Proof of use: [`submission/SDC2026_TeamName_Runpod_POU.pdf`](submission/SDC2026_TeamName_Runpod_POU.pdf)
-
 ---
 
 ## Challenges & Learnings
